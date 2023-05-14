@@ -1,4 +1,5 @@
 import React from "react";
+import { createRoot } from "react-dom/client";
 import { Link } from "react-router-dom";
 
 export const Home = () => {
@@ -6,7 +7,7 @@ export const Home = () => {
         <div>
           <p>Home Page</p>
           <br />
-          <Link to="/about">
+          <Link to="/about" reloadDocument={false}>
             <button>About</button>
           </Link>
         </div>
@@ -18,7 +19,7 @@ export const About = () => {
     <div>
       <p>About Page</p>
       <br />
-      <Link to="/home">
+      <Link to="/home" reloadDocument={false}>
         <button>Home</button>
       </Link>
     </div>

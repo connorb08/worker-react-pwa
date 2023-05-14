@@ -1,11 +1,14 @@
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, matchRoutes, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  matchRoutes,
+  RouterProvider,
+} from "react-router-dom";
 import routes from "./routes";
 import { startTransition, StrictMode } from "react";
 import React from "react";
 
 const hydrate = async () => {
-
   let lazyMatches = matchRoutes(routes, window.location)?.filter(
     (m) => m.route.lazy
   );
@@ -28,11 +31,11 @@ const hydrate = async () => {
     ReactDOM.hydrateRoot(
       root,
       <StrictMode>
-        <RouterProvider router={router} fallbackElement={null}/>
+        <RouterProvider router={router} fallbackElement={null} />
       </StrictMode>
     );
-  })
-}
+  });
+};
 
 if (window.requestIdleCallback) {
   window.requestIdleCallback(hydrate);

@@ -1916,9 +1916,9 @@ var require_react_dom_server_legacy_browser_development = __commonJS({
     if (true) {
       (function() {
         "use strict";
-        var React6 = require_react();
+        var React5 = require_react();
         var ReactVersion = "18.2.0";
-        var ReactSharedInternals = React6.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+        var ReactSharedInternals = React5.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
         function warn(format) {
           {
             {
@@ -3814,7 +3814,7 @@ var require_react_dom_server_legacy_browser_development = __commonJS({
         }
         function flattenOptionChildren(children) {
           var content = "";
-          React6.Children.forEach(children, function(child) {
+          React5.Children.forEach(children, function(child) {
             if (child == null) {
               return;
             }
@@ -7270,9 +7270,9 @@ var require_react_dom_server_browser_development = __commonJS({
     if (true) {
       (function() {
         "use strict";
-        var React6 = require_react();
+        var React5 = require_react();
         var ReactVersion = "18.2.0";
-        var ReactSharedInternals = React6.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+        var ReactSharedInternals = React5.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
         function warn(format) {
           {
             {
@@ -9214,7 +9214,7 @@ var require_react_dom_server_browser_development = __commonJS({
         }
         function flattenOptionChildren(children) {
           var content = "";
-          React6.Children.forEach(children, function(child) {
+          React5.Children.forEach(children, function(child) {
             if (child == null) {
               return;
             }
@@ -15757,7 +15757,7 @@ var require_react_router_development = __commonJS({
   ".yarn/__virtual__/react-router-virtual-dcbfb1a27b/0/cache/react-router-npm-6.11.1-6464a80fbc-c5cafbaac1.zip/node_modules/react-router/dist/umd/react-router.development.js"(exports, module) {
     (function(global, factory) {
       typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require_react(), require_router_cjs()) : typeof define === "function" && define.amd ? define(["exports", "react", "@remix-run/router"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ReactRouter = {}, global.React, global.RemixRouter));
-    })(exports, function(exports2, React6, router) {
+    })(exports, function(exports2, React5, router) {
       "use strict";
       function _interopNamespace(e) {
         if (e && e.__esModule)
@@ -15779,7 +15779,7 @@ var require_react_router_development = __commonJS({
         n["default"] = e;
         return Object.freeze(n);
       }
-      var React__namespace = /* @__PURE__ */ _interopNamespace(React6);
+      var React__namespace = /* @__PURE__ */ _interopNamespace(React5);
       function _extends() {
         _extends = Object.assign ? Object.assign.bind() : function(target) {
           for (var i = 1; i < arguments.length; i++) {
@@ -16860,7 +16860,7 @@ var require_react_router_dom_development = __commonJS({
   ".yarn/__virtual__/react-router-dom-virtual-e709ed901d/0/cache/react-router-dom-npm-6.11.1-c723cae389-44566e10cb.zip/node_modules/react-router-dom/dist/umd/react-router-dom.development.js"(exports, module) {
     (function(global, factory) {
       typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require_react(), require_main(), require_router_cjs()) : typeof define === "function" && define.amd ? define(["exports", "react", "react-router", "@remix-run/router"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ReactRouterDOM = {}, global.React, global.ReactRouter, global.RemixRouter));
-    })(exports, function(exports2, React6, reactRouter, router) {
+    })(exports, function(exports2, React5, reactRouter, router) {
       "use strict";
       function _interopNamespace(e) {
         if (e && e.__esModule)
@@ -16882,7 +16882,7 @@ var require_react_router_dom_development = __commonJS({
         n["default"] = e;
         return Object.freeze(n);
       }
-      var React__namespace = /* @__PURE__ */ _interopNamespace(React6);
+      var React__namespace = /* @__PURE__ */ _interopNamespace(React5);
       function _extends() {
         _extends = Object.assign ? Object.assign.bind() : function(target) {
           for (var i = 1; i < arguments.length; i++) {
@@ -17996,7 +17996,7 @@ var require_server = __commonJS({
   ".yarn/__virtual__/react-router-dom-virtual-e709ed901d/0/cache/react-router-dom-npm-6.11.1-c723cae389-44566e10cb.zip/node_modules/react-router-dom/server.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var React6 = require_react();
+    var React5 = require_react();
     var router = require_router_cjs();
     var reactRouter = require_main();
     var reactRouterDom = require_main2();
@@ -18020,7 +18020,7 @@ var require_server = __commonJS({
       n["default"] = e;
       return Object.freeze(n);
     }
-    var React__namespace = /* @__PURE__ */ _interopNamespace(React6);
+    var React__namespace = /* @__PURE__ */ _interopNamespace(React5);
     function StaticRouter({
       basename,
       children,
@@ -18257,7 +18257,7 @@ var require_server = __commonJS({
 });
 
 // app/server.tsx
-var import_react5 = __toESM(require_react(), 1);
+var import_react4 = __toESM(require_react(), 1);
 var import_server = __toESM(require_server_browser(), 1);
 var import_server2 = __toESM(require_server(), 1);
 
@@ -18275,18 +18275,19 @@ var About = () => {
   return /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("p", null, "About Page"), /* @__PURE__ */ import_react.default.createElement("br", null), /* @__PURE__ */ import_react.default.createElement(import_react_router_dom.Link, { to: "/home", reloadDocument: false }, /* @__PURE__ */ import_react.default.createElement("button", null, "Home")));
 };
 
-// app/components/layout.tsx
+// app/root.tsx
 var import_react2 = __toESM(require_react(), 1);
 var import_react_router_dom2 = __toESM(require_main2(), 1);
-function Layout() {
-  return /* @__PURE__ */ import_react2.default.createElement("div", null, /* @__PURE__ */ import_react2.default.createElement(import_react_router_dom2.Outlet, null));
-}
+var Root = () => {
+  return /* @__PURE__ */ import_react2.default.createElement("html", null, /* @__PURE__ */ import_react2.default.createElement("head", null, /* @__PURE__ */ import_react2.default.createElement("title", null, "Edge React App"), /* @__PURE__ */ import_react2.default.createElement("meta", { name: "viewport", content: "width=device-width, initial-scale=1" }), /* @__PURE__ */ import_react2.default.createElement("meta", { charSet: "UTF-8" })), /* @__PURE__ */ import_react2.default.createElement("body", null, /* @__PURE__ */ import_react2.default.createElement("div", { id: "root" }, /* @__PURE__ */ import_react2.default.createElement(import_react_router_dom2.Outlet, null)), /* @__PURE__ */ import_react2.default.createElement("script", { src: "client.entry.js" })));
+};
+var root_default = Root;
 
 // app/routes.tsx
 var routes = [
   {
     path: "/",
-    element: /* @__PURE__ */ import_react3.default.createElement(Layout, null),
+    element: /* @__PURE__ */ import_react3.default.createElement(root_default, null),
     children: [
       {
         path: "",
@@ -18311,13 +18312,6 @@ var routes = [
 ];
 var routes_default = routes;
 
-// app/root.tsx
-var import_react4 = __toESM(require_react(), 1);
-var Root = (props) => {
-  return /* @__PURE__ */ import_react4.default.createElement("html", null, /* @__PURE__ */ import_react4.default.createElement("head", null, /* @__PURE__ */ import_react4.default.createElement("title", null, "Edge React App"), /* @__PURE__ */ import_react4.default.createElement("meta", { name: "viewport", content: "width=device-width, initial-scale=1" }), /* @__PURE__ */ import_react4.default.createElement("meta", { charSet: "UTF-8" })), /* @__PURE__ */ import_react4.default.createElement("body", null, /* @__PURE__ */ import_react4.default.createElement("div", { id: "root" }, props.children), /* @__PURE__ */ import_react4.default.createElement("script", { src: "client.entry.js" })));
-};
-var root_default = Root;
-
 // app/server.tsx
 async function handleRequest(request, responseStatusCode, responseHeaders) {
   const handler = (0, import_server2.createStaticHandler)(routes_default);
@@ -18330,7 +18324,7 @@ async function handleRequest(request, responseStatusCode, responseHeaders) {
   }
   const router = (0, import_server2.createStaticRouter)(handler.dataRoutes, context);
   const body = await (0, import_server.renderToReadableStream)(
-    /* @__PURE__ */ import_react5.default.createElement(root_default, null, /* @__PURE__ */ import_react5.default.createElement(import_react5.default.StrictMode, null, /* @__PURE__ */ import_react5.default.createElement(import_server2.StaticRouterProvider, { router, context }))),
+    /* @__PURE__ */ import_react4.default.createElement(import_react4.default.StrictMode, null, /* @__PURE__ */ import_react4.default.createElement(import_server2.StaticRouterProvider, { router, context })),
     {
       onError: (error) => {
         responseStatusCode = 500;

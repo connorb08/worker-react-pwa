@@ -29,25 +29,25 @@ export default async function handleRequest(
 
   const router = createStaticRouter(handler.dataRoutes, context);
 
-  // const body = await renderToReadableStream(
-  //   <Root>
-  //     <React.StrictMode>
-  //       <StaticRouterProvider router={router} context={context} />
-  //     </React.StrictMode>
-  //   </Root>,
-  //   {
-  //     onError: (error) => {
-  //       responseStatusCode = 500;
-  //       console.error(error);
-  //     },
-  //     signal: request.signal,
-  //   }
-  // );
+  const body = await renderToReadableStream(
+    <Root>
+      <React.StrictMode>
+        <StaticRouterProvider router={router} context={context} />
+      </React.StrictMode>
+    </Root>,
+    {
+      onError: (error) => {
+        responseStatusCode = 500;
+        console.error(error);
+      },
+      signal: request.signal,
+    }
+  );
 
   const headers = new Headers(responseHeaders);
   headers.set("Content-Type", "text/html");
 
-  return new Response("body", {
+  return new Response(body, {
     status: responseStatusCode,
     headers,
   });

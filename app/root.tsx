@@ -1,4 +1,6 @@
+import { prependOnceListener } from "process";
 import React, { PropsWithChildren } from "react";
+import { Outlet } from "react-router-dom";
 
 const Root = (props: PropsWithChildren) => {
   return (
@@ -12,6 +14,7 @@ const Root = (props: PropsWithChildren) => {
         <div id="root">
           {props.children}
         </div>
+        <script src="client.entry.js" ></script>
       </body>
     </html>
   );
