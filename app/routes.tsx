@@ -1,8 +1,8 @@
 import React from "react";
-import { RouteObject, json, useLoaderData } from "react-router-dom";
+import { RouteObject } from "react-router-dom";
 import { About } from "./components/components";
 import { Home } from "./components/components";
-import Layout from "./components/layout";
+import Layout from "./components/Layout";
 
 const routes: RouteObject[] = [
   {
@@ -11,22 +11,12 @@ const routes: RouteObject[] = [
     children: [
       {
         path: "",
-        loader() {
-          return json({ message: "Welcome to React Router!" });
-        },
-        Component() {
-          let data: any = useLoaderData();
-          return <h1>{data.message}</h1>;
-        },
+        element: <Home />
       },
       {
         path: "about",
         element: <About />,
-      },
-      {
-        path: "home",
-        element: <Home />,
-      },
+      }
     ],
   },
 ];

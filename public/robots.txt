@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /
+
+User-agent: *
+Disallow: /cdn-cgi/
+
+User-agent: Googlebot
+Allow: /

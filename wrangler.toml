@@ -1,16 +1,28 @@
-main='dist/index.js'
-compatibility_date = "2023-05-14"
-name="cf-react"
+main = 'dist/index.js'
+compatibility_date = "2023-05-11"
+name = "beta-connorbray-net"
 
-kv_namespaces = [
-    { binding = "__cf_react_site_assets", id = "db06acbfa07e452c929266cc5fda8313", preview_id = "07e1f6fd9bd74a5a855514f370714115" }
-]
-
-[vars]
-__STATIC_CONTENT = "__cf_react_site_assets"
+[site]
+bucket = "./public"
 
 [build]
 command = "yarn build"
-watch_dir="src/"
 
+[vars]
+NODE_ENV = "production"
 
+[env.production]
+routes = [{pattern = "beta.connorbray.net", custom_domain = true}]
+
+[env.production.vars]
+NODE_ENV = "production"
+
+[env.development]
+routes = [{pattern = "dev.connorbray.net", custom_domain = true}]
+
+[env.development.vars]
+NODE_ENV = "development"
+
+[env.development.build]
+command = "yarn build:dev"
+watch_dir = "app/"

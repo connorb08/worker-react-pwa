@@ -1,48 +1,60 @@
 import * as esbuild from "esbuild";
 
+const IS_PRODUCTION = process.env.NODE_ENV === "production";
+
+const productionBuilds = [
+  {
+    name: "Build worker",
+    build: {
+      entryPoints: ["./worker/index.ts"],
+      bundle: true,
+      minify: IS_PRODUCTION,
+      sourcemap: !IS_PRODUCTION,
+      format: "esm",
+      metafile: true,
+      external: ["__STATIC_CONTENT_MANIFEST"],
+      outfile: "./dist/index.js",
+      define: {
+        'process.env.NODE_ENV': `"${process.env.NODE_ENV}"`
+    },
+    },
+  },
+  {
+    name: "Build client entry",
+    build: {
+      entryPoints: ["./app/client.entry.tsx"],
+      bundle: true,
+      minify: IS_PRODUCTION,
+      sourcemap: !IS_PRODUCTION,
+      format: "esm",
+      metafile: true,
+      outfile: "./public/build/client.entry.js",
+      define: {
+        'process.env.NODE_ENV': `"${process.env.NODE_ENV}"`
+    },
+    },
+  },
+];
+
 async function build() {
-  const res1 = new Promise(async (resolve, reject) => {
-    try {
-      const startTime = Date.now();
-      const result = await esbuild.build({
-        entryPoints: ["./worker/index.ts"],
-        bundle: true,
-        minify: false,
-        sourcemap: true,
-        format: "esm",
-        metafile: true,
-        external: ["__STATIC_CONTENT"],
-        outfile: "./dist/index.js",
-      });
-      const endTime = Date.now();
-      console.log(`Built in ${endTime - startTime}ms`);
-      resolve(result);
-    } catch (error) {
-      reject(error);
-    }
-  });
 
-  // const res2 = new Promise(async (resolve, reject) => {
-  //   try {
-  //     const startTime = Date.now();
-  //     const result = await esbuild.build({
-  //       entryPoints: ["./app/client.entry.tsx"],
-  //       bundle: true,
-  //       minify: false,
-  //       sourcemap: true,
-  //       format: "esm",
-  //       metafile: true,
-  //       outfile: "./build/client.entry.js",
-  //     });
-  //     const endTime = Date.now();
-  //     console.log(`Built in ${endTime - startTime}ms`);
-  //     resolve(result);
-  //   } catch (error) {
-  //     reject(error);
-  //   }
-  // });
+  const results = [];
+  const startTime = Date.now();
 
-  const [server] = await Promise.all([res1])
+  console.log((IS_PRODUCTION) ? "Building in production..." : "Building in development...")
+
+  for (const buildStep of productionBuilds) {
+    await esbuild.build(buildStep.build).then((res) => {
+      results.push(res);
+      console.log(`${buildStep.name} finished.`)
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
+
+  const endTime = Date.now();
+  console.log(`Built in ${endTime - startTime}ms`);
+
 }
 
 build().catch((e) => console.error("Unknown error caught during build:", e));

@@ -8,29 +8,23 @@ const worker: ExportedHandler<Env> = {
   ): Promise<Response> {
     try {
 
-      try {
-        const response = await handleAsset(request, env, ctx);
+      const response = await handleAsset(request, env, ctx);
 
+      // if (process.env.NODE_ENV === 'development') {
+      //   response.headers.set("Cache-Control", "no-cache");
+      // }
 
-        // console.log('STATUS')
-        // console.log(response.status);
-
-        if (response.status === 404) {
-          console.log('404 STATUS')
-          return await handleRequest(request, env, ctx);
-        }
-
-        return response;
-
-      } catch {
-
-        return await handleRequest(request, env, ctx);
-
+      if (response.status === 404) {
+        console.log('Asset not found, sending to request handler');
+        const requestResponse = await handleRequest(request, env, ctx);
+        return requestResponse;
       }
-    
+      
+      return response;
 
       
     } catch (error) {
+      // Return 500 if error is not handled
       console.log(error);
       return new Response("Internal Server Error", { status: 500 });
     }

@@ -5,14 +5,7 @@ import {
 } from "@cloudflare/kv-asset-handler";
 
 import appRequestHandler from "~/app/server";
-
-const manifest = await import("__STATIC_CONTENT")
-  .then((res) => {
-    return res;
-  })
-  .catch((err) => {
-    return "{}";
-  });
+import ASSET_MANIFEST from "__STATIC_CONTENT_MANIFEST";
 
 export async function handleRequest(
   request: Request,
@@ -22,22 +15,25 @@ export async function handleRequest(
   return appRequestHandler(request);
 }
 
-export async function handleAsset<Env extends { __STATIC_CONTENT: string }>(
-  request: Request,
-  env: Env,
-  ctx: ExecutionContext
-): Promise<Response> {
+export async function handleAsset<
+  Env extends { __STATIC_CONTENT: string; NODE_ENV: string }
+>(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
   try {
     return await getAssetFromKV(
       {
         request,
-        waitUntil(promise: Promise<any>) {
-          return ctx.waitUntil(promise);
-        },
+        waitUntil: ctx.waitUntil.bind(ctx),
       },
       {
         cacheControl(request) {
           const url = new URL(request.url);
+
+          // const dev = (env.NODE_ENV === "development");
+          // // Disable caching in development
+          // if (dev) {
+          //   console.log('dev mode');
+          //   return { bypassCache: true, browserTTL: 0, edgeTTL: 0 };
+          // }
 
           if (url.pathname.startsWith("/build")) {
             return {
@@ -52,7 +48,7 @@ export async function handleAsset<Env extends { __STATIC_CONTENT: string }>(
           };
         },
         ASSET_NAMESPACE: env.__STATIC_CONTENT,
-        ASSET_MANIFEST: manifest,
+        ASSET_MANIFEST: ASSET_MANIFEST,
       }
     );
   } catch (error) {

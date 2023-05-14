@@ -6,21 +6,16 @@ import {
   createStaticRouter,
 } from "react-router-dom/server";
 import routes from "./routes";
-import Root from "./root";
+import App from "./root";
 
-export default async function handleRequest(
-  request: Request
-) {
-
+export default async function handleRequest(request: Request) {
   let responseStatusCode: number = 200;
   const responseHeaders: Headers = {} as Headers;
-
-  // let responseHeaders: Headers = {}
 
   const handler = createStaticHandler(routes);
   const context = await handler.query(request);
 
-  // Return redirect if context is a redirect
+  // Return redirect response if context is a redirect
   if (
     context instanceof Response &&
     [301, 302, 303, 307, 308].includes(context.status)
@@ -34,11 +29,11 @@ export default async function handleRequest(
   const router = createStaticRouter(handler.dataRoutes, context);
 
   const body = await renderToReadableStream(
-    <Root>
-      <React.StrictMode>
-        <StaticRouterProvider router={router} context={context} />
-      </React.StrictMode>
-    </Root>,
+    <React.StrictMode>
+      <App router={router} context={context} />
+        {/* <StaticRouterProvider router={router} context={context} /> */}
+      {/* </App> */}
+    </React.StrictMode>,
     {
       onError: (error) => {
         responseStatusCode = 500;
