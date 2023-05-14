@@ -1,24 +1,24 @@
-import React from "react";
-import { RouteObject } from "react-router-dom";
-import { About } from "./components/components";
-import { Home } from "./components/components";
-import Layout from "./components/Layout";
+import React from 'react'
+import { RouteObject } from 'react-router-dom'
+import { About } from './components/components'
+import { Home } from './components/components'
+import Layout from './components/Layout'
 
 const routes: RouteObject[] = [
-  {
-    path: "/",
-    element: <Layout />,
-    children: [
-      {
-        path: "",
-        element: <Home />
-      },
-      {
-        path: "about",
-        element: <About />,
-      }
-    ],
-  },
-];
+    {
+        path: '/',
+        element: <Layout />,
+        children: [
+            {
+                path: '',
+                element: <Home />,
+            },
+            {
+                path: 'about',
+                element: <About />,
+            },
+        ],
+    },
+]
 
-export default routes;
+export default routes
