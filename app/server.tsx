@@ -9,10 +9,14 @@ import routes from "./routes";
 import Root from "./root";
 
 export default async function handleRequest(
-  request: Request,
-  responseStatusCode: number,
-  responseHeaders: Headers
+  request: Request
 ) {
+
+  let responseStatusCode: number = 200;
+  const responseHeaders: Headers = {} as Headers;
+
+  // let responseHeaders: Headers = {}
+
   const handler = createStaticHandler(routes);
   const context = await handler.query(request);
 

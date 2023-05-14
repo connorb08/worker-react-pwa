@@ -2,14 +2,15 @@
   "name": "cfsite",
   "packageManager": "yarn@3.5.0",
   "type": "module",
-  "main": "",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "wrangler dev --port 3000",
     "build": "NODE_ENV=production yarn node scripts/build.js",
     "build:dev": "NODE_ENV=development yarn node scripts/build.js",
-    "clean": "rm -rf dist/"
+    "clean": "rm -rf ./dist ./build ./public/build"
   },
   "dependencies": {
+    "@cloudflare/kv-asset-handler": "^0.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.11.1",

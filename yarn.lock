@@ -14,6 +14,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@cloudflare/kv-asset-handler@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "@cloudflare/kv-asset-handler@npm:0.3.0"
+  dependencies:
+    mime: ^3.0.0
+  checksum: 6d3754096728d082765a7eb08f50e7cebcadee9224896beaee0e998ee43d919aa2e1447c69fb0934ed9df7acc3f8125992653af07522546bb3217086e249f0fb
+  languageName: node
+  linkType: hard
+
 "@cloudflare/workers-types@npm:^4.20230511.0":
   version: 4.20230511.0
   resolution: "@cloudflare/workers-types@npm:4.20230511.0"
@@ -831,6 +840,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "cfsite@workspace:."
   dependencies:
+    "@cloudflare/kv-asset-handler": ^0.3.0
     "@cloudflare/workers-types": ^4.20230511.0
     "@types/node": ^20.1.4
     "@types/react": ^18.2.6

@@ -14,7 +14,7 @@ const Root = (props: PropsWithChildren) => {
         <div id="root">
           {props.children}
         </div>
-        <script src="client.entry.js" ></script>
+        <script src="build/client.entry.js" ></script>
       </body>
     </html>
   );
