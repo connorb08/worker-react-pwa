@@ -1,0 +1,27 @@
+{
+  "name": "cfsite",
+  "packageManager": "yarn@3.5.0",
+  "type": "module",
+  "main": "",
+  "scripts": {
+    "dev": "wrangler dev --port 3000",
+    "build": "NODE_ENV=production yarn node scripts/build.js",
+    "build:dev": "NODE_ENV=development yarn node scripts/build.js",
+    "clean": "rm -rf dist/"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router": "^6.11.1",
+    "react-router-dom": "^6.11.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230511.0",
+    "@types/node": "^20.1.4",
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
+    "esbuild": "^0.17.19",
+    "typescript": "^5.0.4",
+    "wrangler": "^2.20.0"
+  }
+}

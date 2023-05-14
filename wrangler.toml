@@ -1,0 +1,6 @@
+main='dist/index.js'
+compatibility_date = "2023-05-14"
+
+[build]
+command = "yarn build"
+watch_dir="src/"
